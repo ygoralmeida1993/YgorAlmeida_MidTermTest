@@ -22,29 +22,35 @@ var objects;
             if (x === void 0) { x = 0; }
             if (y === void 0) { y = 0; }
             if (isCentered === void 0) { isCentered = false; }
-            var _this = _super.call(this, imagePath) || this;
-            _this.image.addEventListener("load", function () {
-                //console.log("the button image finished loading");
-                if (isCentered) {
-                    _this.regX = _this.getBounds().width * 0.5;
-                    _this.regY = _this.getBounds().height * 0.5;
-                }
-                _this.x = x;
-                _this.y = y;
-            });
+            var _this = _super.call(this, imagePath, x, y, isCentered) || this;
             _this.on("mouseover", _this.MouseOver);
             _this.on("mouseout", _this.MouseOut);
+            _this.Start();
             return _this;
         }
-        // methods
+        // PRIVATE METHODS
+        Button.prototype._checkBounds = function () {
+        };
+        // PUBLIC METHODS
         Button.prototype.MouseOver = function () {
             this.alpha = 0.7;
         };
         Button.prototype.MouseOut = function () {
             this.alpha = 1.0;
         };
+        /**
+         * This function is used for initialization
+         *
+         * @memberof Button
+         */
+        Button.prototype.Start = function () {
+        };
+        Button.prototype.Update = function () {
+        };
+        Button.prototype.Reset = function () {
+        };
         return Button;
-    }(createjs.Bitmap));
+    }(objects.GameObject));
     objects.Button = Button;
 })(objects || (objects = {}));
 //# sourceMappingURL=Button.js.map

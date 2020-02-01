@@ -21,6 +21,7 @@ var objects;
             if (imageString === void 0) { imageString = "./Assets/images/placeholder.png"; }
             if (x === void 0) { x = 0; }
             if (y === void 0) { y = 0; }
+            if (centered === void 0) { centered = false; }
             var _this = _super.call(this, imageString) || this;
             // initialization
             _this._width = 0;
@@ -89,14 +90,10 @@ var objects;
             enumerable: true,
             configurable: true
         });
-        Object.defineProperty(GameObject.prototype, "isCollding", {
+        Object.defineProperty(GameObject.prototype, "isColliding", {
             get: function () {
                 return this._isColliding;
             },
-            enumerable: true,
-            configurable: true
-        });
-        Object.defineProperty(GameObject.prototype, "isColliding", {
             set: function (newState) {
                 this._isColliding = newState;
             },

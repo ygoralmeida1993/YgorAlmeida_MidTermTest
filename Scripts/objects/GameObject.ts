@@ -55,7 +55,7 @@ module objects
             this.y = newPosition.y;
         }
 
-        get isCollding():boolean
+        get isColliding():boolean
         {
             return this._isColliding;
         }
@@ -68,7 +68,7 @@ module objects
 
         // CONSTRUCTOR
         constructor(imageString:string = "./Assets/images/placeholder.png", 
-        x:number = 0, y:number = 0, centered:boolean)
+        x:number = 0, y:number = 0, centered:boolean = false)
         {
             super(imageString);
 

@@ -1,32 +1,26 @@
 module objects
 {
-    export class Button extends createjs.Bitmap
+    export class Button extends GameObject
     {
+        
         // constructor
         constructor(imagePath:string = './Assets/images/button.png'
             , x:number = 0, y:number= 0, isCentered:boolean = false)
         {
-            super(imagePath);
-
-            this.image.addEventListener("load", () => {
-
-                //console.log("the button image finished loading");
-                if(isCentered)
-                {
-                    this.regX = this.getBounds().width * 0.5;
-                    this.regY = this.getBounds().height * 0.5;
-                }
-    
-                this.x = x
-                this.y = y
-            });
+            super(imagePath, x, y, isCentered);
 
             this.on("mouseover", this.MouseOver);
             this.on("mouseout", this.MouseOut);
 
+            this.Start();
+        }
+        
+        // PRIVATE METHODS
+        protected _checkBounds(): void {
+            
         }
 
-        // methods
+        // PUBLIC METHODS
         MouseOver():void
         {
             this.alpha = 0.7;
@@ -35,6 +29,23 @@ module objects
         MouseOut():void
         {
             this.alpha = 1.0;
+        }
+
+        /**
+         * This function is used for initialization
+         *
+         * @memberof Button
+         */
+        public Start(): void {
+            
+        }
+
+        public Update(): void {
+            
+        }
+
+        public Reset(): void {
+            
         }
     }
 }
