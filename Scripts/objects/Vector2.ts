@@ -7,6 +7,7 @@ module objects
         private _y:number;
         private _magnitude:number;
         private _sqrMagnitude:number;
+        private _displayObject?:createjs.DisplayObject;
 
         // PUBLIC PROPERTIES
         get x():number
@@ -19,6 +20,10 @@ module objects
             this._x = newX;
             this.sqrMagnitude = this._computeSqrMagnitude();
             this.magnitude = this._computeMagnitude();
+            if (this._displayObject != undefined)
+            {
+                this._displayObject.x = this._x;
+            }
         }
 
         get y():number
@@ -31,6 +36,10 @@ module objects
             this._y = newY;
             this.sqrMagnitude = this._computeSqrMagnitude();
             this.magnitude = this._computeMagnitude();
+            if (this._displayObject != undefined)
+            {
+                this._displayObject.y = this._y;
+            }
         }
 
         get magnitude():number
@@ -55,13 +64,18 @@ module objects
         }
 
         // CONSTRUCTOR
-        constructor(x: number = 0, y:number = 0)
+        constructor(x: number = 0, y:number = 0, displayObject?: createjs.DisplayObject)
         {
             // Initialize member variables
             this._x = 0;
             this._y = 0;
             this._magnitude = 0;
             this._sqrMagnitude = 0;
+
+            if (displayObject != undefined)
+            {
+                this._displayObject = displayObject;
+            }
 
             // set x and y
             this.x = x;

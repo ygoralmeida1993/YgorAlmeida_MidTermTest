@@ -3,7 +3,7 @@ var objects;
 (function (objects) {
     var Vector2 = /** @class */ (function () {
         // CONSTRUCTOR
-        function Vector2(x, y) {
+        function Vector2(x, y, displayObject) {
             if (x === void 0) { x = 0; }
             if (y === void 0) { y = 0; }
             // Initialize member variables
@@ -11,6 +11,9 @@ var objects;
             this._y = 0;
             this._magnitude = 0;
             this._sqrMagnitude = 0;
+            if (displayObject != undefined) {
+                this._displayObject = displayObject;
+            }
             // set x and y
             this.x = x;
             this.y = y;
@@ -24,6 +27,9 @@ var objects;
                 this._x = newX;
                 this.sqrMagnitude = this._computeSqrMagnitude();
                 this.magnitude = this._computeMagnitude();
+                if (this._displayObject != undefined) {
+                    this._displayObject.x = this._x;
+                }
             },
             enumerable: true,
             configurable: true
@@ -36,6 +42,9 @@ var objects;
                 this._y = newY;
                 this.sqrMagnitude = this._computeSqrMagnitude();
                 this.magnitude = this._computeMagnitude();
+                if (this._displayObject != undefined) {
+                    this._displayObject.y = this._y;
+                }
             },
             enumerable: true,
             configurable: true
