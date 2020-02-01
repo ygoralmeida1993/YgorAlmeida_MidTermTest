@@ -87,7 +87,10 @@ let Game = (function(){
             helloLabel.setText("Hello, World!");
         });
 
+        let vector1 = new objects.Vector2(100, 200);
         
+        console.log(vector1.toString());
+
     }
 
     window.addEventListener('load', Start);

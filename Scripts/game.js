@@ -67,6 +67,8 @@ var Game = (function () {
         resetButton.on("click", function () {
             helloLabel.setText("Hello, World!");
         });
+        var vector1 = new objects.Vector2(100, 200);
+        console.log(vector1.toString());
     }
     window.addEventListener('load', Start);
 })();
