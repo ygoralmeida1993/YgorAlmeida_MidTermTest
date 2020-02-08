@@ -5,12 +5,9 @@ let Game = (function(){
     // variable declarations
     let canvas:HTMLCanvasElement = document.getElementsByTagName('canvas')[0];
     let stage:createjs.Stage;
-    let welcomeLabel: objects.Label;
-    let startButton: objects.Button;
-
-    let player: objects.Player;
-
     
+    let currentSceneState:scenes.State;
+    let currentScene: objects.Scene;
 
     /**
      * This method initializes the CreateJS (EaselJS) Library
@@ -23,7 +20,10 @@ let Game = (function(){
         createjs.Ticker.framerate = 60; // 60 FPS
         createjs.Ticker.on('tick', Update);
         stage.enableMouseOver(20);
-        Main();
+        
+        currentSceneState = scenes.State.NO_SCENE;
+        config.Game.SCENE = scenes.State.START;
+
     }
 
     /**
@@ -32,11 +32,12 @@ let Game = (function(){
      */
     function Update():void
     {
-        player.Update();
+        if(currentSceneState != config.Game.SCENE)
+        {
+            Main();
+        }
 
-        managers.Collision.AABBCheck(player, startButton);
-
-
+        currentScene.Update();
         
 
 
@@ -49,27 +50,35 @@ let Game = (function(){
      */
     function Main():void
     {
-        console.log(`%c Main Started...`, "color: green; font-size: 16px;");
+        console.log(`%c Scene Switched...`, "color: green; font-size: 16px;");
 
-        //instantiate a new Text object
-        welcomeLabel = new objects.Label("The Game", "80px", "Consolas", "#000000", 320, 180, true);
-        stage.addChild(welcomeLabel);
+        // clean up
+        if(currentSceneState != scenes.State.NO_SCENE)
+        {
+            currentScene.removeAllChildren();
+            stage.removeAllChildren();
+        }
 
-        // buttons
-        startButton = new objects.Button('./Assets/images/startButton.png', 320, 430, true);
-        stage.addChild(startButton);
+        // switch to the new scene
 
-        startButton.on("click", function(){
-            welcomeLabel.setText("clicked!");
-        });
+        switch(config.Game.SCENE)
+        {
+            case scenes.State.START:
+                console.log("switch to Start Scene");
+                currentScene = new scenes.Start(); 
+                break;
+            case scenes.State.PLAY:
+                console.log("switch to Play Scene");
+                currentScene = new scenes.Play(); 
+                break;
+            case scenes.State.END:
+                console.log("switch to End Scene");
+                currentScene = new scenes.End(); 
+                break;
+        }
 
-        player = new objects.Player();
-        player.image.addEventListener("load", function(){
-            player.isCentered = true;
-        });
-        
-        stage.addChild(player);
-
+        currentSceneState = config.Game.SCENE;
+        stage.addChild(currentScene);
 
     }
 
