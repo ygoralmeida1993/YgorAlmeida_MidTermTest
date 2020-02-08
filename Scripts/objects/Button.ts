@@ -37,7 +37,7 @@ module objects
          * @memberof Button
          */
         public Start(): void {
-            
+            this.name = "Button";
         }
 
         public Update(): void {

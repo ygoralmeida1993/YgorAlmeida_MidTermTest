@@ -30,13 +30,11 @@ var objects;
             _this._halfHeight = 0;
             _this._position = new objects.Vector2(0, 0, _this);
             _this._isColliding = false;
+            _this._isCentered = false;
             _this.image.addEventListener("load", function () {
                 _this.width = _this.getBounds().width;
                 _this.height = _this.getBounds().height;
-                if (centered) {
-                    _this.regX = _this.halfWidth;
-                    _this.regY = _this.halfHeight;
-                }
+                _this.isCentered = centered;
             });
             _this.position = new objects.Vector2(x, y, _this);
             return _this;
@@ -100,12 +98,29 @@ var objects;
             enumerable: true,
             configurable: true
         });
+        Object.defineProperty(GameObject.prototype, "isCentered", {
+            get: function () {
+                return this._isCentered;
+            },
+            set: function (newState) {
+                this._isCentered = newState;
+                if (newState) {
+                    this._centerGameObject();
+                }
+            },
+            enumerable: true,
+            configurable: true
+        });
         // PRIVATE METHODS
         GameObject.prototype._computeHalfWidth = function () {
             return this.width * 0.5;
         };
         GameObject.prototype._computeHalfHeight = function () {
             return this.height * 0.5;
+        };
+        GameObject.prototype._centerGameObject = function () {
+            this.regX = this.halfWidth;
+            this.regY = this.halfHeight;
         };
         return GameObject;
     }(createjs.Bitmap));

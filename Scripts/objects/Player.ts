@@ -23,7 +23,7 @@ module objects
 
 
         public Start(): void {
-            
+            this.name = "Player";
         }
 
         public Update(): void {

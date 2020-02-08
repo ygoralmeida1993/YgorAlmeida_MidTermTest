@@ -29,6 +29,7 @@ var objects;
         };
         // PUBLIC METHODS
         Player.prototype.Start = function () {
+            this.name = "Player";
         };
         Player.prototype.Update = function () {
             this.position = new objects.Vector2(this.stage.mouseX, this.stage.mouseY);

@@ -34,42 +34,10 @@ let Game = (function(){
     {
         player.Update();
 
-        let topLeftPlayer = new objects.Vector2(player.position.x, player.position.y);
-        let topLeftButton = new objects.Vector2(startButton.position.x - startButton.halfWidth,
-            startButton.position.y - startButton.halfHeight);
-
-            // AABB Collision Detection
-       /*  if (topLeftPlayer.x < topLeftButton.x + startButton.width &&
-            topLeftPlayer.x + player.width > topLeftButton.x &&
-            topLeftPlayer.y < topLeftButton.y + startButton.height &&
-            topLeftPlayer.y + player.height > topLeftButton.y) 
-            {
-                if(!startButton.isColliding)
-                {
-                    console.log("Collision!");
-                    startButton.isColliding = true;
-
-                
-                }
-                
-            } */
+        managers.Collision.AABBCheck(player, startButton);
 
 
-        // squared radius check
-        let radii = player.halfHeight + startButton.halfHeight;
-
-        if(objects.Vector2.sqrDistance(player.position, startButton.position) < (radii * radii))
-        {
-            if(!startButton.isColliding)
-                {
-                    console.log("Collision!");
-                    startButton.isColliding = true;
-                }
-        }
-        else
-        {
-            startButton.isColliding = false;
-        }
+        
 
 
         stage.update();
@@ -96,6 +64,10 @@ let Game = (function(){
         });
 
         player = new objects.Player();
+        player.image.addEventListener("load", function(){
+            player.isCentered = true;
+        });
+        
         stage.addChild(player);
 
 
