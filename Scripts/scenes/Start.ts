@@ -30,7 +30,7 @@ module scenes
              //instantiate a new Text object
             this._welcomeLabel = new objects.Label("The Game", "80px", "Consolas", "#FFFF00", 320, 180, true);
             // buttons
-             this._startButton = new objects.Button('./Assets/images/startButton.png', 320, 430, true);
+             this._startButton = new objects.Button(config.Game.ASSETS.getResult("startButton"), 320, 430, true);
 
              this._ocean = new objects.Ocean();
             this.Main();

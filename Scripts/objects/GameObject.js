@@ -18,7 +18,7 @@ var objects;
         __extends(GameObject, _super);
         // CONSTRUCTOR
         function GameObject(imageString, x, y, centered) {
-            if (imageString === void 0) { imageString = "./Assets/images/placeholder.png"; }
+            if (imageString === void 0) { imageString = config.Game.ASSETS.getResult("placeholder"); }
             if (x === void 0) { x = 0; }
             if (y === void 0) { y = 0; }
             if (centered === void 0) { centered = false; }
@@ -32,11 +32,11 @@ var objects;
             _this._velocity = new objects.Vector2(0, 0);
             _this._isColliding = false;
             _this._isCentered = false;
-            _this.image.addEventListener("load", function () {
-                _this.width = _this.getBounds().width;
-                _this.height = _this.getBounds().height;
-                _this.isCentered = centered;
-            });
+            // this.image.addEventListener("load", () => {
+            _this.width = _this.getBounds().width;
+            _this.height = _this.getBounds().height;
+            _this.isCentered = centered;
+            //});
             _this.position = new objects.Vector2(x, y, _this);
             return _this;
         }

@@ -9,6 +9,27 @@ let Game = (function(){
     let currentSceneState:scenes.State;
     let currentScene: objects.Scene;
 
+    let assets: createjs.LoadQueue;
+
+    let assetManifest = 
+    [
+        {id:"button", src:"./Assets/images/button.png"},
+        {id:"placeholder", src:"./Assets/images/placeholder.png"},
+        {id:"startButton", src:"./Assets/images/startButton.png"},
+        {id:"nextButton", src:"./Assets/images/nextButton.png"},
+        {id:"backButton", src:"./Assets/images/backButton.png"},
+        {id:"ocean", src:"./Assets/images/ocean.gif"}
+    ];
+
+    function Preload():void
+    {
+        assets = new createjs.LoadQueue(); // asset container
+        config.Game.ASSETS = assets; // make a reference to the assets in the global config
+        assets.installPlugin(createjs.Sound); // supports sound preloading
+        assets.loadManifest(assetManifest);
+        assets.on("complete", Start);
+    }
+
     /**
      * This method initializes the CreateJS (EaselJS) Library
      * It sets the framerate to 60 FPS and sets up the main Game Loop (Update)
@@ -17,13 +38,12 @@ let Game = (function(){
     {
         console.log(`%c Game Started!`, "color: blue; font-size: 20px; font-weight: bold;");
         stage = new createjs.Stage(canvas);
-        createjs.Ticker.framerate = 60; // 60 FPS
+        createjs.Ticker.framerate = config.Game.FPS;
         createjs.Ticker.on('tick', Update);
         stage.enableMouseOver(20);
         
         currentSceneState = scenes.State.NO_SCENE;
         config.Game.SCENE = scenes.State.START;
-
     }
 
     /**
@@ -82,7 +102,7 @@ let Game = (function(){
 
     }
 
-    window.addEventListener('load', Start);
+    window.addEventListener('load', Preload);
 
 
 })();

@@ -93,7 +93,7 @@ module objects
 
 
         // CONSTRUCTOR
-        constructor(imageString:string = "./Assets/images/placeholder.png", 
+        constructor(imageString:Object = config.Game.ASSETS.getResult("placeholder"), 
         x:number = 0, y:number = 0, centered:boolean = false)
         {
             super(imageString);
@@ -108,13 +108,13 @@ module objects
             this._isColliding = false;
             this._isCentered = false;
 
-            this.image.addEventListener("load", () => {
+           // this.image.addEventListener("load", () => {
 
                 this.width = this.getBounds().width;
                 this.height = this.getBounds().height;
 
                 this.isCentered = centered;
-            });
+            //});
 
             this.position = new Vector2(x, y, this);
 

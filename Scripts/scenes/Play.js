@@ -33,7 +33,7 @@ var scenes;
             //instantiate a new Text object
             this._playLabel = new objects.Label("Play Scene", "80px", "Consolas", "#FFFF00", 320, 180, true);
             // buttons
-            this._nextButton = new objects.Button('./Assets/images/nextButton.png', 320, 430, true);
+            this._nextButton = new objects.Button(config.Game.ASSETS.getResult("nextButton"), 320, 430, true);
             this._ocean = new objects.Ocean();
             this.Main();
         };
