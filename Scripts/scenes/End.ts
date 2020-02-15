@@ -3,8 +3,9 @@ module scenes
     export class End extends objects.Scene
     {
         // PRIVATE INSTANCE MEMBERS
-        endLabel: objects.Label;
-        backButton: objects.Button;
+        private _endLabel: objects.Label;
+        private _backButton: objects.Button;
+        private _ocean: objects.Ocean;
 
         // PUBLIC PROPERTIES
 
@@ -14,8 +15,9 @@ module scenes
             super();
 
             // initialization
-            this.endLabel = new objects.Label();
-            this.backButton = new objects.Button();
+            this._endLabel = new objects.Label();
+            this._backButton = new objects.Button();
+            this._ocean = new objects.Ocean();
 
             this.Start();
         }
@@ -23,29 +25,34 @@ module scenes
         // PRIVATE METHODS
 
         // PUBLIC METHODS
+
+        // Initializing and Instantiating
         public Start(): void 
         {
              //instantiate a new Text object
-            this.endLabel = new objects.Label("End Scene", "80px", "Consolas", "#000000", 320, 180, true);
+            this._endLabel = new objects.Label("End Scene", "80px", "Consolas", "#FFFF00", 320, 180, true);
             // buttons
-             this.backButton = new objects.Button('./Assets/images/backButton.png', 320, 430, true);
-            this.Main();
+             this._backButton = new objects.Button('./Assets/images/backButton.png', 320, 430, true);
+            
+             this._ocean = new objects.Ocean();
+             this.Main();
         }        
         
         public Update(): void 
         {
-           
+            this._ocean.Update();
         }
         
         public Main(): void 
         {
-       
-            this.addChild(this.endLabel);
+            this.addChild(this._ocean);
+
+            this.addChild(this._endLabel);
 
         
-            this.addChild(this.backButton);
+            this.addChild(this._backButton);
 
-            this.backButton.on("click", ()=>{
+            this._backButton.on("click", ()=>{
                 config.Game.SCENE = scenes.State.PLAY;
             });
 

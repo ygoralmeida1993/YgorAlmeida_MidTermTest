@@ -21,26 +21,31 @@ var scenes;
         function End() {
             var _this = _super.call(this) || this;
             // initialization
-            _this.endLabel = new objects.Label();
-            _this.backButton = new objects.Button();
+            _this._endLabel = new objects.Label();
+            _this._backButton = new objects.Button();
+            _this._ocean = new objects.Ocean();
             _this.Start();
             return _this;
         }
         // PRIVATE METHODS
         // PUBLIC METHODS
+        // Initializing and Instantiating
         End.prototype.Start = function () {
             //instantiate a new Text object
-            this.endLabel = new objects.Label("End Scene", "80px", "Consolas", "#000000", 320, 180, true);
+            this._endLabel = new objects.Label("End Scene", "80px", "Consolas", "#FFFF00", 320, 180, true);
             // buttons
-            this.backButton = new objects.Button('./Assets/images/backButton.png', 320, 430, true);
+            this._backButton = new objects.Button('./Assets/images/backButton.png', 320, 430, true);
+            this._ocean = new objects.Ocean();
             this.Main();
         };
         End.prototype.Update = function () {
+            this._ocean.Update();
         };
         End.prototype.Main = function () {
-            this.addChild(this.endLabel);
-            this.addChild(this.backButton);
-            this.backButton.on("click", function () {
+            this.addChild(this._ocean);
+            this.addChild(this._endLabel);
+            this.addChild(this._backButton);
+            this._backButton.on("click", function () {
                 config.Game.SCENE = scenes.State.PLAY;
             });
         };
