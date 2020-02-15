@@ -107,14 +107,11 @@ module objects
             this._velocity = new Vector2(0, 0);
             this._isColliding = false;
             this._isCentered = false;
+            
+            this.width = this.getBounds().width;
+            this.height = this.getBounds().height;
 
-           // this.image.addEventListener("load", () => {
-
-                this.width = this.getBounds().width;
-                this.height = this.getBounds().height;
-
-                this.isCentered = centered;
-            //});
+            this.isCentered = centered;
 
             this.position = new Vector2(x, y, this);
 

@@ -4,9 +4,7 @@
         "module": "CommonJS",
         "sourceMap": true,
         "noImplicitAny": true,
-        "strictNullChecks": true,
         "strictFunctionTypes": true,
-        "strictPropertyInitialization": true,
         "strictBindCallApply": true,
         "noImplicitThis": true,
         "alwaysStrict": true

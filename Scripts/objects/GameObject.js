@@ -32,11 +32,9 @@ var objects;
             _this._velocity = new objects.Vector2(0, 0);
             _this._isColliding = false;
             _this._isCentered = false;
-            // this.image.addEventListener("load", () => {
             _this.width = _this.getBounds().width;
             _this.height = _this.getBounds().height;
             _this.isCentered = centered;
-            //});
             _this.position = new objects.Vector2(x, y, _this);
             return _this;
         }

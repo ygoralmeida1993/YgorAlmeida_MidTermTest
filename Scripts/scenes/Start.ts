@@ -14,11 +14,6 @@ module scenes
         {
             super();
 
-            // initialization
-            this._welcomeLabel = new objects.Label();
-            this._startButton = new objects.Button();
-            this._ocean = new objects.Ocean();
-
             this.Start();
         }
 

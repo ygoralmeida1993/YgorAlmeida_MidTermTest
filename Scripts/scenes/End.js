@@ -20,10 +20,6 @@ var scenes;
         // CONSTRUCTOR
         function End() {
             var _this = _super.call(this) || this;
-            // initialization
-            _this._endLabel = new objects.Label();
-            _this._backButton = new objects.Button();
-            _this._ocean = new objects.Ocean();
             _this.Start();
             return _this;
         }

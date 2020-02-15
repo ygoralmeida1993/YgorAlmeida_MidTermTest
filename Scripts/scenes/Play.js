@@ -20,33 +20,24 @@ var scenes;
         // CONSTRUCTOR
         function Play() {
             var _this = _super.call(this) || this;
-            // initialization
-            _this._playLabel = new objects.Label();
-            _this._nextButton = new objects.Button();
-            _this._ocean = new objects.Ocean();
             _this.Start();
             return _this;
         }
         // PRIVATE METHODS
         // PUBLIC METHODS
+        //initialize and instatiate
         Play.prototype.Start = function () {
-            //instantiate a new Text object
-            this._playLabel = new objects.Label("Play Scene", "80px", "Consolas", "#FFFF00", 320, 180, true);
-            // buttons
-            this._nextButton = new objects.Button(config.Game.ASSETS.getResult("nextButton"), 320, 430, true);
             this._ocean = new objects.Ocean();
+            this._plane = new objects.Plane();
             this.Main();
         };
         Play.prototype.Update = function () {
             this._ocean.Update();
+            this._plane.Update();
         };
         Play.prototype.Main = function () {
             this.addChild(this._ocean);
-            this.addChild(this._playLabel);
-            this.addChild(this._nextButton);
-            this._nextButton.on("click", function () {
-                config.Game.SCENE = scenes.State.END;
-            });
+            this.addChild(this._plane);
         };
         return Play;
     }(objects.Scene));
