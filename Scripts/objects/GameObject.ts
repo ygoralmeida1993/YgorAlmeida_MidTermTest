@@ -8,6 +8,7 @@ module objects
         private _halfWidth:number;
         private _halfHeight:number;
         private _position:Vector2;
+        private _velocity:Vector2;
         private _isColliding:boolean;
         private _isCentered:boolean;
         
@@ -56,6 +57,16 @@ module objects
             this.y = newPosition.y;
         }
 
+        get velocity():Vector2
+        {
+            return this._velocity;
+        }
+
+        set velocity(newVelocity:Vector2)
+        {
+            this._velocity = newVelocity;
+        }
+
         get isColliding():boolean
         {
             return this._isColliding;
@@ -93,6 +104,7 @@ module objects
             this._halfWidth = 0;
             this._halfHeight = 0;
             this._position = new Vector2(0, 0, this);
+            this._velocity = new Vector2(0, 0);
             this._isColliding = false;
             this._isCentered = false;
 

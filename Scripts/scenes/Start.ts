@@ -3,8 +3,9 @@ module scenes
     export class Start extends objects.Scene
     {
         // PRIVATE INSTANCE MEMBERS
-        welcomeLabel: objects.Label;
-        startButton: objects.Button;
+        private _welcomeLabel: objects.Label;
+        private _startButton: objects.Button;
+        private _ocean: objects.Ocean;
 
         // PUBLIC PROPERTIES
 
@@ -14,8 +15,9 @@ module scenes
             super();
 
             // initialization
-            this.welcomeLabel = new objects.Label();
-            this.startButton = new objects.Button();
+            this._welcomeLabel = new objects.Label();
+            this._startButton = new objects.Button();
+            this._ocean = new objects.Ocean();
 
             this.Start();
         }
@@ -26,26 +28,29 @@ module scenes
         public Start(): void 
         {
              //instantiate a new Text object
-            this.welcomeLabel = new objects.Label("The Game", "80px", "Consolas", "#000000", 320, 180, true);
+            this._welcomeLabel = new objects.Label("The Game", "80px", "Consolas", "#FFFF00", 320, 180, true);
             // buttons
-             this.startButton = new objects.Button('./Assets/images/startButton.png', 320, 430, true);
+             this._startButton = new objects.Button('./Assets/images/startButton.png', 320, 430, true);
+
+             this._ocean = new objects.Ocean();
             this.Main();
         }        
         
         public Update(): void 
         {
-           
+           this._ocean.Update();
         }
         
         public Main(): void 
         {
+            this.addChild(this._ocean);
        
-            this.addChild(this.welcomeLabel);
+            this.addChild(this._welcomeLabel);
 
         
-            this.addChild(this.startButton);
+            this.addChild(this._startButton);
 
-            this.startButton.on("click", ()=>{
+            this._startButton.on("click", ()=>{
                 config.Game.SCENE = scenes.State.PLAY;
             });
 

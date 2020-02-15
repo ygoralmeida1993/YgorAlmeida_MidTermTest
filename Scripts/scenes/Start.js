@@ -21,8 +21,9 @@ var scenes;
         function Start() {
             var _this = _super.call(this) || this;
             // initialization
-            _this.welcomeLabel = new objects.Label();
-            _this.startButton = new objects.Button();
+            _this._welcomeLabel = new objects.Label();
+            _this._startButton = new objects.Button();
+            _this._ocean = new objects.Ocean();
             _this.Start();
             return _this;
         }
@@ -30,17 +31,20 @@ var scenes;
         // PUBLIC METHODS
         Start.prototype.Start = function () {
             //instantiate a new Text object
-            this.welcomeLabel = new objects.Label("The Game", "80px", "Consolas", "#000000", 320, 180, true);
+            this._welcomeLabel = new objects.Label("The Game", "80px", "Consolas", "#FFFF00", 320, 180, true);
             // buttons
-            this.startButton = new objects.Button('./Assets/images/startButton.png', 320, 430, true);
+            this._startButton = new objects.Button('./Assets/images/startButton.png', 320, 430, true);
+            this._ocean = new objects.Ocean();
             this.Main();
         };
         Start.prototype.Update = function () {
+            this._ocean.Update();
         };
         Start.prototype.Main = function () {
-            this.addChild(this.welcomeLabel);
-            this.addChild(this.startButton);
-            this.startButton.on("click", function () {
+            this.addChild(this._ocean);
+            this.addChild(this._welcomeLabel);
+            this.addChild(this._startButton);
+            this._startButton.on("click", function () {
                 config.Game.SCENE = scenes.State.PLAY;
             });
         };
