@@ -16,6 +16,7 @@ var scenes;
 (function (scenes) {
     var Play = /** @class */ (function (_super) {
         __extends(Play, _super);
+        // PRIVATE INSTANCE MEMBERS
         // PUBLIC PROPERTIES
         // CONSTRUCTOR
         function Play() {
@@ -27,17 +28,11 @@ var scenes;
         // PUBLIC METHODS
         //initialize and instatiate
         Play.prototype.Start = function () {
-            this._ocean = new objects.Ocean();
-            this._plane = new objects.Plane();
             this.Main();
         };
         Play.prototype.Update = function () {
-            this._ocean.Update();
-            this._plane.Update();
         };
         Play.prototype.Main = function () {
-            this.addChild(this._ocean);
-            this.addChild(this._plane);
         };
         return Play;
     }(objects.Scene));
