@@ -13,6 +13,7 @@ let Game = (function(){
 
     let assetManifest = 
     [
+        {id:"rollButton", src:"./Assets/images/rollButton.png"},
         {id:"button", src:"./Assets/images/button.png"},
         {id:"placeholder", src:"./Assets/images/placeholder.png"},
         {id:"startButton", src:"./Assets/images/startButton.png"},

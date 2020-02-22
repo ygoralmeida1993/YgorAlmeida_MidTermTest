@@ -9,6 +9,7 @@ var Game = (function () {
     var currentScene;
     var assets;
     var assetManifest = [
+        { id: "rollButton", src: "./Assets/images/rollButton.png" },
         { id: "button", src: "./Assets/images/button.png" },
         { id: "placeholder", src: "./Assets/images/placeholder.png" },
         { id: "startButton", src: "./Assets/images/startButton.png" },
