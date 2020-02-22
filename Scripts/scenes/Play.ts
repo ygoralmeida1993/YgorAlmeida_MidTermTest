@@ -4,6 +4,8 @@ module scenes
     {
         // PRIVATE INSTANCE MEMBERS
         private _welcomeLabel: objects.Label;
+        private _rollLabel1: objects.Label;
+        private _rollLabel2: objects.Label;
         private _rollButton: objects.Button;
 
 
@@ -24,8 +26,10 @@ module scenes
         //initialize and instatiate
         public Start(): void 
         {
-            this._welcomeLabel = new objects.Label("The Dice Roller", "40px", "Consolas", "#000000", 320, 180, true);
-            // buttons
+            //labels
+             this._welcomeLabel = new objects.Label("The Dice Roller", "40px", "Consolas", "#000000", 320, 180, true);
+
+             // buttons
              this._rollButton = new objects.Button(config.Game.ASSETS.getResult("rollButton"), 320, 430, true);
 
             
