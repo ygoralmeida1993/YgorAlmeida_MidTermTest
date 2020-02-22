@@ -4,10 +4,16 @@ module scenes
     {
         // PRIVATE INSTANCE MEMBERS
         private _welcomeLabel: objects.Label;
-        private _rollLabel1: objects.Label;
-        private _rollLabel2: objects.Label;
+        private _dices: createjs.Bitmap;
         private _rollButton: objects.Button;
 
+        // DICE NUMBERS
+        private _one: number;
+        private _two: number;
+        private _three: number;
+        private _four: number;
+        private _five: number;
+        private _six: number;
 
         // PUBLIC PROPERTIES
 
@@ -27,7 +33,7 @@ module scenes
         public Start(): void 
         {
             //labels
-             this._welcomeLabel = new objects.Label("The Dice Roller", "40px", "Consolas", "#000000", 320, 180, true);
+            this._dices = new createjs.Bitmap(config.Game.ASSETS.getResult("blank"));         
 
              // buttons
              this._rollButton = new objects.Button(config.Game.ASSETS.getResult("rollButton"), 320, 430, true);

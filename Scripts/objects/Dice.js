@@ -16,13 +16,12 @@ var objects;
 (function (objects) {
     var Dice = /** @class */ (function (_super) {
         __extends(Dice, _super);
-        // constructor
-        function Dice(imagePath, x, y, isCentered) {
-            if (imagePath === void 0) { imagePath = config.Game.ASSETS.getResult("blank"); }
+        function Dice(imageDice, x, y, isCentered) {
+            if (imageDice === void 0) { imageDice = config.Game.ASSETS.getResult("blank"); }
             if (x === void 0) { x = 0; }
             if (y === void 0) { y = 0; }
             if (isCentered === void 0) { isCentered = false; }
-            var _this = _super.call(this, imagePath, x, y, isCentered) || this;
+            var _this = _super.call(this, imageDice, x, y, isCentered) || this;
             _this.on("mouseover", _this.MouseOver);
             _this.on("mouseout", _this.MouseOut);
             _this.Start();
@@ -44,7 +43,7 @@ var objects;
          * @memberof Button
          */
         Dice.prototype.Start = function () {
-            this.name = "Button";
+            this.name = "Dice";
         };
         Dice.prototype.Update = function () {
         };

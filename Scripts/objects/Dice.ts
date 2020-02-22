@@ -2,12 +2,10 @@ module objects
 {
     export class Dice extends GameObject
     {
-        
-        // constructor
-        constructor(imagePath:Object = config.Game.ASSETS.getResult("blank")
+        constructor(imageDice: String | Object = config.Game.ASSETS.getResult("blank")
             , x:number = 0, y:number= 0, isCentered:boolean = false)
         {
-            super(imagePath, x, y, isCentered);
+            super(imageDice, x, y, isCentered);
 
             this.on("mouseover", this.MouseOver);
             this.on("mouseout", this.MouseOut);
@@ -37,7 +35,7 @@ module objects
          * @memberof Button
          */
         public Start(): void {
-            this.name = "Button";
+            this.name = "Dice";
         }
 
         public Update(): void {
@@ -48,4 +46,5 @@ module objects
             
         }
     }
+    
 }

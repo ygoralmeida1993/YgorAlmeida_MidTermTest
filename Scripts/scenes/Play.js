@@ -28,7 +28,7 @@ var scenes;
         //initialize and instatiate
         Play.prototype.Start = function () {
             //labels
-            this._welcomeLabel = new objects.Label("The Dice Roller", "40px", "Consolas", "#000000", 320, 180, true);
+            this._dices = new createjs.Bitmap(config.Game.ASSETS.getResult("blank"));
             // buttons
             this._rollButton = new objects.Button(config.Game.ASSETS.getResult("rollButton"), 320, 430, true);
             this.Main();

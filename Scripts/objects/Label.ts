@@ -4,7 +4,7 @@ module objects
     {
         // constructor
         constructor(
-            public labelString:string = "empty label", 
+            public labelString:string  = "empty label", 
             public fontSize: string = "12px", 
             public fontFamily: string = "Consolas",
             public fontColour: string = "#000000",
