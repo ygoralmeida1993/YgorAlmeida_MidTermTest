@@ -28,7 +28,8 @@ var scenes;
         //initialize and instatiate
         Play.prototype.Start = function () {
             //labels
-            this._dices = new createjs.Bitmap(config.Game.ASSETS.getResult("blank"));
+            this._firstDice = new objects.Dice(config.Game.ASSETS.getResult("blank"), 300, 400, true);
+            this._secondDice = new objects.Dice(config.Game.ASSETS.getResult("blank"), 280, 400, true);
             // buttons
             this._rollButton = new objects.Button(config.Game.ASSETS.getResult("rollButton"), 320, 430, true);
             this.Main();
@@ -36,6 +37,8 @@ var scenes;
         Play.prototype.Update = function () {
         };
         Play.prototype.Main = function () {
+            this.addChild(this._firstDice);
+            this.addChild(this._secondDice);
             this.addChild(this._welcomeLabel);
             this.addChild(this._rollButton);
             this._rollButton.on("click", function () {

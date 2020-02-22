@@ -4,7 +4,8 @@ module scenes
     {
         // PRIVATE INSTANCE MEMBERS
         private _welcomeLabel: objects.Label;
-        private _dices: createjs.Bitmap;
+        private _firstDice: objects.Dice;
+        private _secondDice: objects.Dice;
         private _rollButton: objects.Button;
 
         // DICE NUMBERS
@@ -33,7 +34,8 @@ module scenes
         public Start(): void 
         {
             //labels
-            this._dices = new createjs.Bitmap(config.Game.ASSETS.getResult("blank"));         
+            this._firstDice = new objects.Dice(config.Game.ASSETS.getResult("blank"), 300, 400, true);   
+            this._secondDice = new objects.Dice(config.Game.ASSETS.getResult("blank"), 280, 400, true);     
 
              // buttons
              this._rollButton = new objects.Button(config.Game.ASSETS.getResult("rollButton"), 320, 430, true);
@@ -50,6 +52,8 @@ module scenes
         public Main(): void 
         {
 
+            this.addChild(this._firstDice);
+            this.addChild(this._secondDice);
             this.addChild(this._welcomeLabel);
 
         
@@ -60,6 +64,8 @@ module scenes
             });
 
         }
+
+        
 
         
     }

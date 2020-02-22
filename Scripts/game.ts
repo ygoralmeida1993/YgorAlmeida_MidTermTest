@@ -13,8 +13,8 @@ let Game = (function(){
 
     let assetManifest = 
     [
-        {id:"dice1", src:"./Assets/images/blank.png"},
-        {id:"dice2", src:"./Assets/images/blank.png"},
+        {id:"secondDice", src:"./Assets/images/blank.png"},
+        {id:"firstDice", src:"./Assets/images/blank.png"},
         {id:"rollButton", src:"./Assets/images/rollButton.png"},
         {id:"button", src:"./Assets/images/button.png"},
         {id:"placeholder", src:"./Assets/images/placeholder.png"},
